@@ -1,6 +1,6 @@
 # p1-ChrisJose
 
-# Continue POS system design and include the following functionalities:
+# Continue POS system design:
 	⁃	Add and edit sales orders 
 	⁃	Schedule delivery dates for sales orders
 	⁃	Update invoice status of orders (Quote, Unpaid, Paid, Delivered, Invoiced)
