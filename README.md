@@ -1,7 +1,5 @@
 # p1-ChrisJose
 
-# Project 1
-
 # Continue POS system design and include the following functionalities:
 	⁃	Add and edit sales orders 
 	⁃	Schedule delivery dates for sales orders
