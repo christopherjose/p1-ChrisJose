@@ -15,7 +15,7 @@
 	⁃	For defective items which may or may not be returned 
 
 # Project Definitions
-# Status/Invoice status of orders will follow stages:
+	⁃	Status/Invoice status of orders will follow stages:
 	⁃	Quote indicates level of interest in sales order but non-final commitment
 	⁃	Unpaid indicates order should count towards employee performance based on a firm commitment from guest, who has not fully paid for the order
 	⁃	Paid indicates the order has been fully paid for
