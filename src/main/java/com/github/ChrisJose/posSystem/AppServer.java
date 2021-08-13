@@ -4,7 +4,7 @@ import reactor.core.publisher.Mono;
 import reactor.netty.http.server.HttpServer;
 
 public class AppServer {
-/*
+
     public static void main(String[] args) {
 
         HttpServer.create()   // Prepares an HTTP server ready for configuration
@@ -21,5 +21,5 @@ public class AppServer {
             .bindNow(); // Starts the server in a blocking fashion, and waits for it to finish its initialization
 
     }
-*/
+
 }

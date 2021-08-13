@@ -34,11 +34,6 @@ perc_discount int;
 total_sale_price int;
 PRIMARY KEY(order_id, sold_id);
 
-INSERT INTO database.orderAccount (
-'S0000', 'C0000', 'p0000','F80jie7aA', 'Hybrid Mattress','Queen',
-'Outlet', 1, 3999, 1300, 67, 1300
-);
-
 
 
 )

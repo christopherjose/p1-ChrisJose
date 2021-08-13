@@ -11,9 +11,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.5" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.5" level="project" />
-    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: com.datastax.oss:java-driver-core:4.13.0" level="project" />
     <orderEntry type="library" name="Maven: com.datastax.oss:native-protocol:1.5.0" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-handler:4.1.60.Final" level="project" />
@@ -70,5 +67,9 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.zipkin.reporter2:zipkin-reporter-brave:2.16.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.zipkin.reporter2:zipkin-reporter:2.16.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.zipkin.zipkin2:zipkin:2.23.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.14.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.14.1" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.14.1" level="project" />
   </component>
 </module>

@@ -1,16 +1,22 @@
-package com.github.ChrisJose.posSystem;
+package com.github.ChrisJose.posSystem.Connection;
 
 import com.datastax.oss.driver.api.core.CqlIdentifier;
+import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.querybuilder.SchemaBuilder;
 import com.datastax.oss.driver.api.querybuilder.schema.CreateKeyspace;
 
-public class connectKeyspace {
+public class Keyspace {
+
+    public CqlSession session;
+
+    public Keyspace(CqlSession session) {
+        this.session = session;
+    }
 
     public void createKeyspace(String keyspaceName, int numberOfReplicas) {
         CreateKeyspace createKeyspace = SchemaBuilder.createKeyspace(keyspaceName)
                 .ifNotExists()
                 .withSimpleStrategy(numberOfReplicas);
-
         session.execute(createKeyspace.build());
     }
 
@@ -18,4 +24,7 @@ public class connectKeyspace {
         session.execute("USE " + CqlIdentifier.fromCql(keyspace));
     }
 
+
 }
+
+//source: https://www.baeldung.com/cassandra-datastax-java-driver
