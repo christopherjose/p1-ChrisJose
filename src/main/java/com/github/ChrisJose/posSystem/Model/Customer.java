@@ -30,6 +30,8 @@ public class Customer {
         this.setZip(zip);
     }
 
+    public Customer() {};
+
 
     //GETTER & SETTER Statements
     public String getCustomerId() {
