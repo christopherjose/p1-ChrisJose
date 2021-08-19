@@ -1,10 +1,9 @@
 package com.github.ChrisJose.posSystem.Model;
-
 import java.util.List;
 
 public class Customer {
 
-    private String customerId;
+    private int customerId;
     private String firstName;
     private String lastName;
     private String primaryPhoneNo;
@@ -14,31 +13,29 @@ public class Customer {
     private String city;
     private String state;
     private String zip;
-    private List<String> orderId;
+    // private List<String> orderId;
 
-    public Customer(String customerId, String firstName, String lastName, String primaryPhoneNo, String emailAddress,
-             String address, String address2, String city, String state, String zip) {
-        this.setCustomerId(customerId);
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setPrimaryPhoneNo(primaryPhoneNo);
-        this.setEmail(emailAddress);
-        this.setAddress(address);
-        this.setAddress2(address2);
-        this.setCity(city);
-        this.setState(state);
-        this.setZip(zip);
+    public Customer(int customerId, String firstName, String lastName, String primaryPhoneNo, String email,
+                    String address, String address2, String city, String state, String zip) {
+        this.customerId=customerId;  //why did i have this.setCustomerId(customerId); before?
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.primaryPhoneNo=primaryPhoneNo;
+        this.email=email;
+        this.address=address;
+        this.address2=address2;
+        this.city=city;
+        this.state=state;
+        this.zip = zip;
     }
 
     public Customer() {};
 
-
-    //GETTER & SETTER Statements
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 
@@ -114,6 +111,7 @@ public class Customer {
         this.zip = zip;
     }
 
+    /*
     public List<String> getOrderId() {
         return orderId;
     }
@@ -121,8 +119,6 @@ public class Customer {
     public void setOrderId(List<String> orderId) {
         this.orderId = orderId;
     }
-
-
-
+ */
 
 }
