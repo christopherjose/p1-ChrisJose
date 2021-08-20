@@ -1,5 +1,4 @@
 package com.github.ChrisJose.posSystem.Model;
-import java.util.List;
 
 public class Customer {
 
@@ -13,11 +12,11 @@ public class Customer {
     private String city;
     private String state;
     private String zip;
-    // private List<String> orderId;
+
 
     public Customer(int customerId, String firstName, String lastName, String primaryPhoneNo, String email,
                     String address, String address2, String city, String state, String zip) {
-        this.customerId=customerId;  //why did i have this.setCustomerId(customerId); before?
+        this.customerId=customerId;
         this.firstName=firstName;
         this.lastName=lastName;
         this.primaryPhoneNo=primaryPhoneNo;
@@ -110,15 +109,5 @@ public class Customer {
     public void setZip(String zip) {
         this.zip = zip;
     }
-
-    /*
-    public List<String> getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(List<String> orderId) {
-        this.orderId = orderId;
-    }
- */
 
 }

@@ -1,9 +1,15 @@
 package com.github.ChrisJose.posSystem.Model;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import org.springframework.stereotype.Service;
 
-//@Service
+@Service
 public class CustomerService {
+
+    private static final Logger log =
+            (Logger) LoggerFactory.getLogger("p1.customer.service");
 
     private CustomerRepository customerRepository;
 
@@ -11,19 +17,23 @@ public class CustomerService {
         this.customerRepository = customerRepository; }
 
     public Flux<Customer> getAll() {
+        log.info("Executing getAll() method");
         return customerRepository.getAll();}
 
     public Mono<Customer> get(String customerId) {
+        log.info("Executing get() method");
         return customerRepository.get(Integer.parseInt(customerId)); }
 
     public Customer createCustomer(Customer customer) {
+        log.info("Executing createCustomer() method");
         return customerRepository.createCustomer(customer);
     }
-    public Mono<Integer> deleteCustomer(String customerId) {
-        //log.info("Deleting Customer");
-        return customerRepository.deleteCustomer(Integer.parseInt(customerId));
-    }
-
-
 
 }
+
+/*
+ public Mono<Integer> deleteCustomer(String customerId) {
+        log.info("Executing deleteCustomer() method");
+        return customerRepository.deleteCustomer(Integer.parseInt(customerId));
+    }
+ */

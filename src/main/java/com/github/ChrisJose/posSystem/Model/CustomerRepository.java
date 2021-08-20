@@ -1,17 +1,24 @@
 package com.github.ChrisJose.posSystem.Model;
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.cql.SimpleStatement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import java.util.List;
 
-//@Repository
 
+
+@Repository
 public class CustomerRepository {
+    private static final Logger log =
+            (Logger) LoggerFactory.getLogger("p1.customer.repo");
     private CqlSession session;
     public CustomerRepository(CqlSession session) {this.session = session; }
 
+    //Retrieve all customers
     public Flux<Customer> getAll() {
+        log.info("Querying database for all customers");
         return Flux.from(session.executeReactive("SELECT * FROM p1.customerAccount"))
                 .map(row -> new Customer(
                         row.getInt("customer_id"),
@@ -23,10 +30,12 @@ public class CustomerRepository {
                         row.getString("address2"),
                         row.getString("city"),
                         row.getString("state"),
-                        row.getString("zip"))); //Add order_id
+                        row.getString("zip")));
     }
 
+    //Retrieve one customer
     public Mono<Customer> get(int customerId) {
+        log.info("Querying database for customer");
         return Mono.from(session.executeReactive("SELECT * FROM p1.customerAccount where customer_id = " + customerId))
                 .map(row -> new Customer(
                         row.getInt("customer_id"),
@@ -38,11 +47,13 @@ public class CustomerRepository {
                         row.getString("address2"),
                         row.getString("city"),
                         row.getString("state"),
-                        row.getString("zip"))); //Add order_id
+                        row.getString("zip")));
     }
 
 
+    //Create a customer
     public Customer createCustomer(Customer customer){
+        log.info("Inserting customer into database");
         SimpleStatement stmt = SimpleStatement.builder(
                 "INSERT INTO p1.customerAccount (customer_id, first_name,last_name,phone_no,email,address,address2,city,state,zip) values (?,?,?,?,?,?,?,?,?,?)")
                 .addPositionalValues(
@@ -57,12 +68,15 @@ public class CustomerRepository {
                         customer.getState(),
                         customer.getZip())
                 .build();
-        Flux.from(session.executeReactive(stmt)).subscribe();  //subscribe()
+        Flux.from(session.executeReactive(stmt)).subscribe();
         return customer;
     }
 
+}
+
+/*
     public Mono<Integer> deleteCustomer(int customerId) {
-        // log.info("Deleting Customer");
+        log.info("Deleting Customer from database");
         Flux.from(session.executeReactive(
                 SimpleStatement.builder("DELETE FROM p1.customerAccount where customer_id = " + customerId)
                         .addPositionalValue(customerId)
@@ -71,9 +85,4 @@ public class CustomerRepository {
         return Mono.just(customerId);
     }
 
-
-
-
-
-
-}
+*/

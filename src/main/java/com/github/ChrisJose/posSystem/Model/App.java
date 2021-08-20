@@ -4,12 +4,18 @@ import com.datastax.oss.driver.api.querybuilder.SchemaBuilder;
 import com.datastax.oss.driver.api.querybuilder.schema.CreateKeyspace;
 import java.net.URISyntaxException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.netty.buffer.ByteBuf;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import org.slf4j.LoggerFactory;
 import io.netty.buffer.Unpooled;
+
 import io.netty.channel.Channel;
 import reactor.core.Disposable;
 import reactor.netty.DisposableServer;
@@ -21,27 +27,27 @@ import io.netty.buffer.ByteBufAllocator;
 public class App {
 
     static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    private static final Logger log = (Logger) LoggerFactory.getLogger("p1.app");
 
     public static void main (String[] args) throws URISyntaxException  {
 
-        /*
+        log.info("Beginning Application");
         AnnotationConfigApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext(AppConfig.class);
 
         applicationContext.getBean(DisposableServer.class)
                 .onDispose()
                 .block();
-
         applicationContext.close();
+        log.info("Ending Application");
 
-         */
     }
 
     static ByteBuf toByteBuf(Object o){
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         try {
             OBJECT_MAPPER.writeValue(out, o);
-        } catch (IOException ex) {
+        } catch (IOException ex)  {
             ex.printStackTrace();
         }
         return ByteBufAllocator.DEFAULT.buffer().writeBytes(out.toByteArray());
@@ -66,6 +72,17 @@ public class App {
             ex.printStackTrace();
         }
         return customer;
+    }
+
+    public static Order parseOrder(String str){
+        Order order = null;
+        try{
+            order = OBJECT_MAPPER.readValue(str, Order.class);
+        }
+        catch (IOException ex){
+            ex.printStackTrace();
+        }
+        return order;
     }
 
 
